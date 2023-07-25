@@ -1,7 +1,10 @@
-i#!/usr/bin/node
+#!/usr/bin/node
 
 const request = require('request');
-request.get(process.argv[2], function (error, response) {
-  if (error) { return; }
-  console.log('code:', response.statusCode);
+
+request(process.argv[2], function (error, response) {
+  if (error) {
+    console.error(error);
+  }
+  console.log('code:', response && response.statusCode);
 });
